@@ -5,7 +5,6 @@ public class Board {
 
     private int _colSize;
     private int _rowSize;
-    private int _dimension;
     private char _board[][];
 
     Board(int col, int row) {
@@ -23,7 +22,7 @@ public class Board {
         return _colSize;
     }
 
-    public char getBoard(int r, int c) {
+    public char getBoardCoords(int r, int c) {
         return _board[r][c];
     }
 
@@ -37,10 +36,6 @@ public class Board {
                 _board[i][j] = ' ';
             }
         }
-    }
-
-    public int getDimension() {
-        return this._dimension;
     }
 
     public boolean changedBoard() {

@@ -47,8 +47,8 @@ public class View {
 
     public void drawBoard(JPanel myButtonPanel) {
         _buttons = new JButton[_rows][_cols];
-        for(int r = 0; r < this._rows; r++) {
-            for(int c = 0; c < this._cols; c++) {
+        for(int r = 0; r < this._rows; r++)
+            for (int c = 0; c < this._cols; c++) {
                 final int _r = r;
                 final int _c = c;
                 JButton button = _buttons[r][c] = new JButton(" ");
@@ -57,18 +57,21 @@ public class View {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         _controller.unitClicked(_r, _c);
-                        char toConvert = _controller.getPlayer().getEngine().getBoard().getBoard(_r, _c);
-                        _buttons[_r][_c].setText(Character.toString(toConvert));
+
+                        //char toConvert = _controller.getPlayer().getEngine().getBoard().getBoardCoords(_r, _c);
+                        //_buttons[_r][_c].setText(Character.toString(toConvert));
+                        //updateView();
                     }
                 });
                 myButtonPanel.add(button);
             }
-        }
-
     }
 
+    public void updateView(int r, int c, char markup) {
+        _buttons[r][c].setText(Character.toString(markup));
+    }
 
-    public JPanel presentTextPanel() {
+    private JPanel presentTextPanel() {
         JPanel myTextPanel = new JPanel();
         myTextPanel.setLayout(new GridLayout(1,1));
         myTextPanel.setPreferredSize(new Dimension(_buttonSize * _cols, _buttonSize));
@@ -77,7 +80,7 @@ public class View {
         return myTextPanel;
     }
 
-    public JPanel presentMainPanel(JPanel myBtnPanel) {
+    private JPanel presentMainPanel(JPanel myBtnPanel) {
         JPanel myMainPanel = new JPanel();
         myMainPanel.setLayout(new BoxLayout(myMainPanel, BoxLayout.Y_AXIS));
         myMainPanel.add(myBtnPanel);

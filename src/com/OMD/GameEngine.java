@@ -6,13 +6,12 @@ public class GameEngine {
 
     private Player _player;
     private Board _board;
+    private ArrayList<Player> _playerList;
 
     private int _currentPlayer = 0;
     private int _nrOfBoards;
     private int _nrOfPlayers;
     private boolean _isOnline;
-    private ArrayList<Player> _playerList;
-
 
     GameEngine(int r, int c, int nrPlayers, boolean isOnline, String markers) {
         _board = new Board(r, c);
@@ -20,10 +19,6 @@ public class GameEngine {
         _nrOfPlayers = nrPlayers;
         _playerList = new ArrayList<Player>();
         createPlayers(nrPlayers, markers);
-    }
-
-    public ArrayList<Player> getPlaylist() {
-        return _playerList;
     }
 
     public boolean getIsOnline() {
@@ -45,21 +40,32 @@ public class GameEngine {
     }
 
     public boolean checkMove(int r, int c) {
-        if(_board.getBoard(r, c) == ' ')
+        if(_board.getBoardCoords(r, c) == ' ')
             return true;
         return false;
     }
 
-    public void updtBoard(int r, int c) {
+    public void updateBoard(int r, int c) {
         if(checkMove(r, c)) {
             setPieceInBoard(r, c, _playerList.get(_currentPlayer).getMarker());
             changePlayer();
+            updateGUI(r, c);
+        }
+    }
+
+    public void updateGUI(int r, int c) {
+        for (int i = 0; i < _nrOfPlayers; i++) {
+            _playerList.get(i).getController().getView().updateView(r, c, _board.getBoardCoords(r, c));
         }
     }
 
     public void changePlayer() {
         _currentPlayer++;
         _currentPlayer %= _nrOfPlayers;
+    }
+
+    public ArrayList<Player> getPlayerlist() {
+        return _playerList;
     }
 
     public int getCurrentPlayer() {

@@ -20,7 +20,7 @@ public class Player {
     }
 
     public void moveRequest (int r, int c) {
-        _engine.updtBoard(r, c);
+        _engine.updateBoard(r, c);
     }
 
     public Controller getController() {
