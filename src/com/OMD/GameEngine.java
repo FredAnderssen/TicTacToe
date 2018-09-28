@@ -37,11 +37,7 @@ public class GameEngine {
     private void createPlayers(int nr, String markers) {
         _nrOfPlayers = nr;
         for (int i = 0; i < _nrOfPlayers; i++)
-            _playerList.add(new Player(this, markers.charAt(i)));
-    }
-
-    public int getCurrentPlayer() {
-       return _currentPlayer;
+            _playerList.add(new Player(this, markers.charAt(i), "Player"+i));
     }
 
     public Board getBoard() {
@@ -49,12 +45,8 @@ public class GameEngine {
     }
 
     public boolean checkMove(int r, int c) {
-        if(_board.getBoard(r, c) == ' ') {
-            //TODO setPiece och changePlayer ska ej vara i denna metod
-            setPieceInBoard(r, c, _playerList.get(_currentPlayer).getMarker());
-            changePlayer();
+        if(_board.getBoard(r, c) == ' ')
             return true;
-        }
         return false;
     }
 
@@ -65,13 +57,17 @@ public class GameEngine {
         }
     }
 
-    public void updtScore() {
-
-    }
-
     public void changePlayer() {
         _currentPlayer++;
         _currentPlayer %= _nrOfPlayers;
+    }
+
+    public int getCurrentPlayer() {
+        return _currentPlayer;
+    }
+
+    public void updtScore() {
+
     }
 
     public int getNrOfBoards() {

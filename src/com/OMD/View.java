@@ -56,10 +56,9 @@ public class View {
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        if(_controller.unitClicked(_r, _c)) {
-                            char toConvert = _controller.getPlayer().getEngine().getBoard().getBoard(_r, _c);
-                            _buttons[_r][_c].setText(Character.toString(toConvert));
-                        }
+                        _controller.unitClicked(_r, _c);
+                        char toConvert = _controller.getPlayer().getEngine().getBoard().getBoard(_r, _c);
+                        _buttons[_r][_c].setText(Character.toString(toConvert));
                     }
                 });
                 myButtonPanel.add(button);

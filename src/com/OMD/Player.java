@@ -2,7 +2,7 @@ package com.OMD;
 
 public class Player {
 
-    private String _name;
+    private String _playerName;
     private int _score;
     private char _gameMarker;
 
@@ -10,18 +10,17 @@ public class Player {
     private GameEngine _engine;
 
     //lägg till controller här oxå i inparametern
-    Player(GameEngine engine, char gameMarker) {
+    Player(GameEngine engine, char gameMarker, String name) {
         _engine = engine;
         _gameMarker = gameMarker;
+        _playerName = name;
         if (getEngine().getIsOnline())
             _controller = new Controller(this);
         //TODO if its offline then?
     }
 
-    public boolean moveRequest (int r, int c) {
-        if(_engine.checkMove(r, c))
-            return true;
-        return false;
+    public void moveRequest (int r, int c) {
+        _engine.updtBoard(r, c);
     }
 
     public Controller getController() {
@@ -37,7 +36,7 @@ public class Player {
     }
 
     public String getName() {
-        return this._name;
+        return this._playerName;
     }
 
     public int getScore() {

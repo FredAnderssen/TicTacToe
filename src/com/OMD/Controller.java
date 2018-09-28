@@ -8,13 +8,11 @@ public class Controller {
     Controller(Player player) {
         _player = player;
         _player.setController(this);
-        _view = new View(this, "test", _player.getEngine().getBoard().getBoardRow(), _player.getEngine().getBoard().getBoardCol(), 50);
+        _view = new View(this, _player.getName(), _player.getEngine().getBoard().getBoardRow(), _player.getEngine().getBoard().getBoardCol(), 50);
     }
 
-    public boolean unitClicked(int r, int c) {
-        if(_player.moveRequest(r, c))
-            return true;
-        return false;
+    public void unitClicked(int r, int c) {
+        _player.moveRequest(r, c);
     }
 
     public Player getPlayer(){
