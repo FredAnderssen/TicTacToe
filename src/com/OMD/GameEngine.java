@@ -19,6 +19,8 @@ public class GameEngine {
         _nrOfPlayers = nrPlayers;
         _playerList = new ArrayList<Player>();
         createPlayers(nrPlayers, markers);
+
+
     }
 
     public boolean getIsOnline() {
@@ -31,8 +33,20 @@ public class GameEngine {
 
     private void createPlayers(int nr, String markers) {
         _nrOfPlayers = nr;
-        for (int i = 0; i < _nrOfPlayers; i++)
-            _playerList.add(new Player(this, markers.charAt(i), "Player"+i));
+        if(_isOnline) {
+            for (int i = 0; i < _nrOfPlayers; i++) {
+                _playerList.add(new Player(this, markers.charAt(i), "Player" + i));
+            }
+        }
+
+        if(_isOnline == false) {
+            _playerList.add(new Player(this, markers.charAt(0), "Player1"));
+            for (int i = 0; i < _nrOfPlayers; i++) {
+                if(i != 0) {
+                    _playerList.add(new Player(this, markers.charAt(i), "Player"+i, _playerList.get(0).getController()));
+                }
+            }
+        }
     }
 
     public Board getBoard() {
@@ -72,6 +86,10 @@ public class GameEngine {
         return _currentPlayer;
     }
 
+    public int getnrOfPlayers() {
+        return _nrOfPlayers;
+    }
+
     public void updtScore() {
 
     }
@@ -84,9 +102,7 @@ public class GameEngine {
 
     }
 
-    public void checkLegalMove() {
 
-    }
 
 
 

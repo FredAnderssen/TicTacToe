@@ -24,7 +24,7 @@ public class Controller {
     }
 
     public void updateInterface(int r, int c, char markup) {
-        
+
     }
 
     public void pieceSelected() {
