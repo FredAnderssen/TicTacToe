@@ -14,21 +14,14 @@ public class Player {
         _engine = engine;
         _gameMarker = gameMarker;
         _playerName = name;
-        //if (getEngine().getIsOnline())
-            _controller = new Controller(this);
-        //TODO if its offline then?
+        _controller = new Controller(this);
     }
+
     Player(GameEngine engine, char gameMarker, String name, Controller controller) {
         _engine = engine;
         _gameMarker = gameMarker;
         _playerName = name;
         _controller = controller;
-    }
-
-
-
-    public void offlineMode() {
-
     }
 
     public void moveRequest (int r, int c) {
@@ -51,12 +44,12 @@ public class Player {
         return this._playerName;
     }
 
-    public int getScore() {
-        return this._score;
-    }
-
     public void setController(Controller _control) {
         this._controller = _control;
+    }
+
+    public int getScore() {
+        return this._score;
     }
 
     public void setGameEngine(GameEngine _engine){

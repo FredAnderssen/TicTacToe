@@ -38,6 +38,10 @@ public class Board {
         }
     }
 
+    public int getBoardsize() {
+        return _rowSize;
+    }
+
     public boolean changedBoard() {
        return true;
     }

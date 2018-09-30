@@ -13,6 +13,7 @@ public class View {
     private int _cols;
     private int _buttonSize;
     private String _playerName;
+    private JLabel _myLabel;
 
     View(Controller _controller, String name, int rowSize, int colSize, int buttonSize) {
         this._controller = _controller;
@@ -71,12 +72,16 @@ public class View {
         _buttons[r][c].setText(Character.toString(markup));
     }
 
+    public void updateViewHaveWon(String name) {
+        _myLabel.setText(name + " have won!");
+    }
+
     private JPanel presentTextPanel() {
         JPanel myTextPanel = new JPanel();
         myTextPanel.setLayout(new GridLayout(1,1));
         myTextPanel.setPreferredSize(new Dimension(_buttonSize * _cols, _buttonSize));
-        JLabel myLabel = new JLabel(_playerName, SwingConstants.CENTER);
-        myTextPanel.add(myLabel);
+        _myLabel = new JLabel(_playerName, SwingConstants.CENTER);
+        myTextPanel.add(_myLabel);
         return myTextPanel;
     }
 
