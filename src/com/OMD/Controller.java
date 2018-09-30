@@ -15,21 +15,11 @@ public class Controller {
         _player.moveRequest(r, c);
     }
 
-    public Player getPlayer(){
-        return _player;
-    }
-
     public View getView() {
         return _view;
     }
 
-    public void updateInterface(int r, int c, char markup) {
 
-    }
-
-    public void pieceSelected() {
-
-    }
 
 
 

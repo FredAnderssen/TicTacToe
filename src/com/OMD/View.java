@@ -58,10 +58,6 @@ public class View {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         _controller.unitClicked(_r, _c);
-
-                        //char toConvert = _controller.getPlayer().getEngine().getBoard().getBoardCoords(_r, _c);
-                        //_buttons[_r][_c].setText(Character.toString(toConvert));
-                        //updateView();
                     }
                 });
                 myButtonPanel.add(button);

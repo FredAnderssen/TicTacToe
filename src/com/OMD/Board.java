@@ -2,7 +2,6 @@ package com.OMD;
 
 public class Board {
 
-
     private int _colSize;
     private int _rowSize;
     private char _board[][];
@@ -39,13 +38,9 @@ public class Board {
     }
 
     public int getBoardsize() {
+        //TODO for now row == col, make adjustement
         return _rowSize;
     }
-
-    public boolean changedBoard() {
-       return true;
-    }
-
 
 
 }

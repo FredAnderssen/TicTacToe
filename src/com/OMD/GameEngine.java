@@ -9,10 +9,8 @@ public class GameEngine {
     private ArrayList<Player> _playerList;
 
     private int _currentPlayer = 0;
-    private int _nrOfBoards;
     private int _nrOfPlayers;
     private boolean _isOnline;
-    private boolean _haveWon;
 
     GameEngine(int r, int c, int nrPlayers, boolean isOnline, String markers) {
         _board = new Board(r, c);
@@ -20,12 +18,6 @@ public class GameEngine {
         _nrOfPlayers = nrPlayers;
         _playerList = new ArrayList<Player>();
         createPlayers(nrPlayers, markers);
-
-
-    }
-
-    public boolean getIsOnline() {
-        return _isOnline;
     }
 
     private void setPieceInBoard(int r, int c, char markup) {
@@ -34,7 +26,7 @@ public class GameEngine {
 
     private void createPlayers(int nr, String markers) {
         _nrOfPlayers = nr;
-
+        //TODO bondekod
         if(_isOnline) {
             for (int i = 0; i < _nrOfPlayers; i++) {
                 _playerList.add(new Player(this, markers.charAt(i), "Player"+i));
@@ -128,28 +120,6 @@ public class GameEngine {
     public void changePlayer() {
         _currentPlayer++;
         _currentPlayer %= _nrOfPlayers;
-    }
-
-
-
-    public ArrayList<Player> getPlayerlist() {
-        return _playerList;
-    }
-
-    public int getCurrentPlayer() {
-        return _currentPlayer;
-    }
-
-    public int getnrOfPlayers() {
-        return _nrOfPlayers;
-    }
-
-    public void updtScore() {
-
-    }
-
-    public int getNrOfBoards() {
-        return this._nrOfBoards;
     }
 
 
